@@ -5,7 +5,6 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <!-- Required meta tags-->
@@ -45,7 +44,7 @@
                     <!-- Scrollable page content -->
                     <div class="page-content">
                       <div id="map"></div>
-                      <div id="media">Media goes here</div>
+                      <div class="media">Media goes here</div>
 
 
                     </div>
@@ -65,6 +64,10 @@
     <script src="scripts/loadMap.js" charset="utf-8"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap"
     async defer></script>
-
+     <!-- Maps scripts -->
+       <script
+     src="https://code.jquery.com/jquery-3.2.1.js"
+     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+     crossorigin="anonymous"></script>
 </body>
 </html>
