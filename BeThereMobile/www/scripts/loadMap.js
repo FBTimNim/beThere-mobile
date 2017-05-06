@@ -152,7 +152,7 @@ function initMap() {
     mapTypeId : google.maps.MapTypeId.ROADMAP
   });
 
-  addMapMarkers();
+  makeApiRequestForMarkers();
   addEventCircles();
 
   showWhoIsThere();
@@ -216,20 +216,20 @@ function getNameHtml(names) {
   return string;
 }
 
-function addMapMarkers() {
+function makeApiRequestForMarkers() {
+  console.log("making request");
+  $.post("http://108.61.194.210:7981/api/getRelevant", {
+     "apikey" :
+         "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
+     "withinTime" : 1,
+   }).done(function(data) { addMapMarkers(data.data); });
+}
+
+function addMapMarkers(data) {
   // Add Markers
+  console.log(data);
 
-  var jsonBody = $.post("http://108.61.194.210:7981/api/getRelevant", {
-    "apikey" :
-        "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
-    "withinTime" : 1,
-  });
-
-  console.log(jsonBody)
-
-      // Need the media list from the database
-      // TODO API CALL!
-      var mediaList = [
+  var mediaList = [
     {
       position : {lat : -37.806548, lng : 144.971080},
       mediaType : 'photo',
@@ -254,8 +254,8 @@ function addMapMarkers() {
     }
   ];
 
-  for (var i = 0; i < mediaList.length; i++) {
-    markerList.push(createMarker(mediaList[i]));
+  for (var i = 0; i < data.length; i++) {
+    markerList.push(createMarker(data[i]));
   }
 
   var markerCluster =
@@ -264,32 +264,42 @@ function addMapMarkers() {
 
 function createMarker(mediaItem) {
   namesList.push(mediaItem.name);
-  var iconURL = mediaItem.thumbURL;
+  var iconURL = mediaItem.thumbUrl;
 
   var marker = new google.maps.Marker({
     title : mediaItem.name,
-    position : mediaItem.position,
+    position : {lat : mediaItem.lat, lon : mediaItem.lon},
     map : map,
     icon : iconURL,
   });
   marker.name = mediaItem.name;
-  marker.mediaType = mediaItem.mediaType;
-  marker.mediaID = mediaItem.mediaID;
+  marker.mediaType = mediaItem.type;
+  marker.url = 'http://108.61.194.210:7981/api/' + mediaItem.url;
 
   // Add on click event to marker
   marker.addListener('click', getFunctionForMediaType(mediaItem.mediaType));
   return marker;
 }
 
+function showHostedVideo() {
+  var html = '<video width="320" height="240" controls>' +
+             '<source src="' + this.url + '" type="video/mp4">' +
+             "</video>";
+
+  emptyMediaDev();
+  $(".media").append(html);
+}
+
 function showVideo() {
   var mediaType = this.mediaType;
-  var mediaID = this.mediaID; // In this case youtube id
+  var mediaID = this.url; // In this case youtube id
   emptyMediaDev();
 
   $(".media").append(
       '<div class = "videoContainer"> <iframe src="http://www.youtube.com/embed/' +
       mediaID + '" width="560" height="315" frameborder="0" ></iframe> </div>');
 }
+
 function showImage() {
   var mediaType = this.mediaType;
   var mediaID = this.mediaID; // In this case image url
@@ -300,6 +310,7 @@ function showImage() {
       '<div class="col-100" id="imgViewer"> <img id="img-media" src="' +
       mediaID + '" /></div>');
 }
+
 function showAudio() { alert("Media: " + this.mediaType + " " + this.mediaID); }
 
 function getFunctionForMediaType(mediaType) {
@@ -311,6 +322,7 @@ function getFunctionForMediaType(mediaType) {
 }
 
 function emptyMediaDev() { $(".media").empty(); }
+
 function getIconURL(mediaType) {
   if (mediaType == 'photo') {
     return iconURLs[1];
