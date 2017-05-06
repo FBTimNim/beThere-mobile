@@ -6,3 +6,12 @@
 .received {
     display:none;
 }
+
+#map {
+  height: 50%;
+  width: 100%;
+}
+
+#media {
+
+}
