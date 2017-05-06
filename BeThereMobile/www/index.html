@@ -5,7 +5,7 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <!-- Required meta tags-->
@@ -44,14 +44,10 @@
 
                     <!-- Scrollable page content -->
                     <div class="page-content">
-                        <!-- Link to another page -->
-                        <a href="about.html" class="link">About App</a>
-                        <div id="deviceready">
-                            <p><a href="#" class="button button-round listening">Waiting for Device to be Ready</a></p>
-                            <p><a href="#" class="button button-round active received">Device Ready</a></p>
-                        </div>
+                      <div id="map"></div>
+                      <div id="media">Media goes here</div>
 
-                        
+
                     </div>
                 </div>
             </div>
@@ -63,5 +59,12 @@
     <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="scripts/index.js"></script>
+
+    <!-- Maps scripts -->
+    <script src = "scripts/markerclusterer.js"></script>
+    <script src="scripts/loadMap.js" charset="utf-8"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap"
+    async defer></script>
+
 </body>
-</html> 
+</html>
