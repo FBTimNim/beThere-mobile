@@ -7,7 +7,7 @@
     console.log('load');
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
-    var SERVER_URL = "http://what";
+
     var API_KEY = "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j";
 
     window.FBLogin = {
@@ -50,6 +50,7 @@
                     window.FBLogin['loggedIn'] = true;
                     window.FBLogin['userId'] = userData['authResponse']['userID'];
                     console.log(userData);
+                    console.log(FBLogin);
                     //alert("UserInfo: " + JSON.stringify(userData));
                     alert('Logged in!');
                     facebookConnectPlugin.getAccessToken(function (token) {
@@ -86,6 +87,10 @@
                         message: 'No Camera Access!'
                     });
                 } else {
+                    if (!window.FBLogin.loggedIn) {
+                        alert("You are not logged in!");
+                        return;
+                    }
                     navigator.camera.getPicture(function (data) {
                         console.log(data);
                         myApp.addNotification({
@@ -97,13 +102,14 @@
                         var options = new FileUploadOptions();
                         options.fileKey = 'media';
                         options.mimeType = 'image/jpeg';
+                        options.chuckedMode = false;
                         options.params = {
-                            "uid": '23',
-                            "lat": -37.814,
-                            "lon": 144.9633,
+                            "uid": FBLogin.userId || '-1',
+                            "lat": "-37.814",
+                            "lon": "144.9633",
                             "type": "photo",
-                            "delay": 0,
-                            "duration": 2,
+                            "delay": "0",
+                            "duration": "2",
                             "apikey": API_KEY
                         };
 
@@ -123,7 +129,7 @@
                                     message: 'Upload Failed: ' + error.exception
                                 });
                             },
-                            options
+                            options,true
                         );
                     },
                         function (error) {
@@ -144,6 +150,10 @@
         /** Video Upload Page **/
         myApp.onPageInit('uploadvideo', function (page) {
             $$(page.container).find('#btnUploadCamera').on('click', function (e) {
+                if (!window.FBLogin.loggedIn) {
+                    alert("You are not logged in!");
+                    return;
+                }
                 //launch device camera
                 navigator.device.capture.captureVideo(
                     function (files) {
@@ -155,7 +165,7 @@
                         options.fileKey = 'media';
                         options.mimeType = 'image/jpeg';
                         options.params = {
-                            "uid": '23',
+                            "uid": FBLogin.userId || '-1',
                             "lat": -37.814,
                             "lon": 144.9633,
                             "type": "video",
@@ -181,7 +191,7 @@
                                     message: 'Upload Failed: ' + error.exception
                                 });
                             },
-                            options
+                            options, true
                         );
                     },
                         function (error) {
