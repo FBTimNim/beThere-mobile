@@ -82,3 +82,13 @@
 #img-media {
     max-width:100%;
 }
+
+#mediaContent .col-100 {
+  width: 100%;
+  height: 100%;
+}
+
+#mediaContent .col-100 img {
+  width: 100%;
+  height: 100%;
+}
