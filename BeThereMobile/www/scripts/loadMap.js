@@ -20,7 +20,7 @@ function initMap() {
         lng: 144.971080
       },
       mediaType: 'photo',
-      mediaID: '1'
+      mediaID: 'https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg'
     },
     {
       position: {
@@ -71,7 +71,11 @@ function showVideo() {
     '" width="560" height="315" frameborder="0" ></iframe> </div>');
 }
 function showImage(){
-  alert("Media: " + this.mediaType + " " + this.mediaID);
+    var mediaType = this.mediaType;
+    var mediaID = this.mediaID; // In this case image url
+    emptyMediaDev();
+    $(".media").append('<div class="content-block-title">Media</div>'
+        + '<div class="col-100" id="imgViewer"> <img id="img-media" src="' + mediaID + '" /></div>');
 }
 function showAudio(){
   alert("Media: " + this.mediaType + " " + this.mediaID);
