@@ -5,7 +5,10 @@
 (function () {
     "use strict";
     console.log('load');
-    document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+
+    var SERVER_URL = "http://what";
+    var API_KEY = "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j";
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
@@ -31,6 +34,7 @@
             dynamicNavbar: true
         });
 
+        /** Photo Upload Page **/
         myApp.onPageInit('uploadphoto', function (page) {
             $$(page.container).find('#btnUploadCamera').on('click', function (e) {
                 //launch device camera
@@ -48,17 +52,21 @@
 
                         var ft = new FileTransfer();
                         var options = new FileUploadOptions();
-                        options.mimeType = 'image/jpg';
+                        options.fileKey = 'media';
+                        options.mimeType = 'image/jpeg';
                         options.params = {
-                            "user": '23',
-                            "time": '',
-                            "latitute": '',
-                            "longitute": ''
+                            "uid": '23',
+                            "lat": -37.814,
+                            "lon": 144.9633,
+                            "type": "photo",
+                            "delay": 0,
+                            "duration": 2,
+                            "apikey": API_KEY
                         };
 
-                        
+                        console.log(options);
                         ft.upload(fileURL,
-                            encodeURI("http://server/upload"),
+                            encodeURI(SERVER_URL+"/api/upload"),
                             function (r) {
                                 console.log(r);
                                 myApp.addNotification({
@@ -89,6 +97,63 @@
             });
         });
 
+
+        /** Video Upload Page **/
+        myApp.onPageInit('uploadvideo', function (page) {
+            $$(page.container).find('#btnUploadCamera').on('click', function (e) {
+                //launch device camera
+                navigator.device.capture.captureVideo(
+                    function (files) {
+                        console.log(files);
+                        var fileURL = files[0].localURL;
+
+                        var ft = new FileTransfer();
+                        var options = new FileUploadOptions();
+                        options.fileKey = 'media';
+                        options.mimeType = 'image/jpeg';
+                        options.params = {
+                            "uid": '23',
+                            "lat": -37.814,
+                            "lon": 144.9633,
+                            "type": "video",
+                            "delay": 0,
+                            "duration": 2,
+                            "apikey": API_KEY
+                        };
+
+
+                        console.log(options);
+                        ft.upload(fileURL,
+                            encodeURI(SERVER_URL + "/api/upload"),
+                            function (r) {
+                                console.log(r);
+                                myApp.addNotification({
+                                    message: 'Upload Succeeded'
+                                });
+                                // exit page
+                            },
+                            function (error) {
+                                console.log('upload error:', error);
+                                myApp.addNotification({
+                                    message: 'Upload Failed: ' + error.exception
+                                });
+                            },
+                            options
+                        );
+                    },
+                        function (error) {
+                            myApp.addNotification({
+                                message: 'Video Capture Error: ' + error
+                            });
+                        },
+                        {
+                            limit:1
+                        }
+                    );
+               
+
+            });
+        });
     };
 
     function onPause() {
