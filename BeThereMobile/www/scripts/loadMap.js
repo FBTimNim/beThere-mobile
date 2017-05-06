@@ -76,3 +76,11 @@ function getIconURL(mediaType) {
     return iconURLs[0];
   }
 }
+
+
+
+function displayImage(mediaObject) {
+    $('img-media').src('https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg');
+
+    $('img-viewer').show();
+}

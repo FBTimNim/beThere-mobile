@@ -5,7 +5,7 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com; style-src 'self' 'unsafe-inline' *.googleapis.com; media-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <!-- Required meta tags-->
@@ -45,7 +45,11 @@
                     <!-- Scrollable page content -->
                     <div class="page-content">
                       <div id="map"></div>
-                      <div id="media">Media goes here</div>
+                      <div id="media">
+                        <div class="content-block-title">Media</div>
+
+                          <div class="col-100" id="imgViewer"><img id="img-media" src="https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg"/></div>
+                      </div>
 
 
                     </div>
