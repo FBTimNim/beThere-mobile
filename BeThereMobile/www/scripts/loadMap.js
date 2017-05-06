@@ -21,6 +21,10 @@ function initMap() {
   showWhoIsThere();
 }
 
+function changeMapLocation(newLoc){
+  map.center = {lat:newLoc.coords.latitude, lng:newLoc.coords.longitude};
+}
+
 function addEventCircles() {
   var eventLocations = [{
       center: {

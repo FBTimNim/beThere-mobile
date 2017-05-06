@@ -13,6 +13,16 @@
         document.addEventListener( 'resume', onResume.bind( this ), false );
 
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+        //This function is in loadMap.js
+        function onSuccess(position) {
+            changeMapLocation(position);
+        }
+
+        var onError = function(error){
+            console.log("panic");
+        }
 
 
 
