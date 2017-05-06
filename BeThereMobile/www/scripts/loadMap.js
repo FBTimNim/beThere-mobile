@@ -12,7 +12,9 @@ function initMap() {
   // Th e
   map = new google.maps.Map(document.getElementById('map'), {
     center: startingLocation,
-    zoom: 13
+    zoom: 13,
+    streetViewControl: false,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
   addMapMarkers();
