@@ -154,8 +154,6 @@ function initMap() {
 
   makeApiRequestForMarkers();
   addEventCircles();
-
-
 }
 
 function changeMapLocation(newLoc) {
@@ -182,9 +180,6 @@ function addEventCircles() {
   }
 }
 
-
-
-
 function makeApiRequestForMarkers() {
   console.log("making request");
   $.post("http://108.61.194.210/api/getRelevant", {
@@ -198,15 +193,14 @@ function addMapMarkers(data) {
   // Add Markers
   console.log(data);
 
-  var mediaList = [{
-      position: {
-        lat: -37.806548,
-        lng: 144.971080
-      },
-      mediaType: 'photo',
-      mediaID: 'https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg',
-      name: 'Fred Smith',
-      thumbURL: 'images/listen.png'
+  var mediaList = [
+    {
+      position : {lat : -37.806548, lng : 144.971080},
+      mediaType : 'photo',
+      mediaID :
+          'https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg',
+      name : 'Fred Smith',
+      thumbURL : 'images/listen.png'
     },
     {
       position : {lat : -37.810142, lng : 144.958377},
@@ -257,7 +251,7 @@ function createMarker(mediaItem) {
   });
   marker.name = mediaItem.name;
   marker.mediaType = mediaItem.type;
-  marker.url =  mediaItem.url;
+  marker.url = mediaItem.url;
 
   // Add on click event to marker
   marker.addListener('click', getFunctionForMediaType(mediaItem.type));
@@ -281,6 +275,7 @@ function showVideo() {
   $(".media").append(
       '<div class = "videoContainer"> <iframe src="http://www.youtube.com/embed/' +
       mediaID + '" width="560" height="315" frameborder="0" ></iframe> </div>');
+}
 
 function showVideo() {
   var mediaType = this.mediaType;
@@ -289,14 +284,12 @@ function showVideo() {
   console.log(url);
 }
 
-
 function showImage() {
   var mediaType = this.mediaType;
   var url = 'http://108.61.194.210/api' + this.url; // In this case image url
   console.log("This is an image");
   console.log(url);
 }
-
 
 function getFunctionForMediaType(mediaType) {
   if (mediaType == 'image') {
