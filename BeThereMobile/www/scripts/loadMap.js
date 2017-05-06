@@ -28,7 +28,7 @@ function initMap() {
         lng: 144.958377
       },
       mediaType: 'video',
-      mediaID: '2'
+      mediaID: 'YJEjQglAdOk'
     },
     {
       position: {
@@ -60,12 +60,38 @@ function createMarker(mediaItem) {
   marker.mediaID = mediaItem.mediaID;
 
   // Add on click event to marker
-  marker.addListener('click', function() {
-    alert("Media: " + this.mediaType + " " + this.mediaID);
-  });
+  marker.addListener('click', getFunctionForMediaType(mediaItem.mediaType));
   return marker;
 }
+function showVideo() {
+  var mediaType = this.mediaType;
+  var mediaID = this.mediaID; // In this case youtube id
+  emptyMediaDev();
+  $( ".media" ).append('<div class = "videoContainer"> <iframe src="http://www.youtube.com/embed/' + mediaID +
+    '" width="560" height="315" frameborder="0" ></iframe> </div>');
+}
+function showImage(){
+  alert("Media: " + this.mediaType + " " + this.mediaID);
+}
+function showAudio(){
+  alert("Media: " + this.mediaType + " " + this.mediaID);
+}
 
+function getFunctionForMediaType(mediaType){
+  if (mediaType == 'video'){
+    return showVideo;
+  }
+  if (mediaType == 'audio'){
+    return showAudio;
+  }
+  if (mediaType == 'photo'){
+    return showImage;
+  }
+}
+
+function emptyMediaDev() {
+  $( ".media" ).empty();
+}
 function getIconURL(mediaType) {
   if (mediaType == 'photo') {
     return iconURLs[1];
