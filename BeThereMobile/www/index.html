@@ -1,4 +1,3 @@
-﻿
 <!DOCTYPE html>
 <html>
 
@@ -7,31 +6,64 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com *; style-src 'self' 'unsafe-inline' *.googleapis.com *; media-src *">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#ff9800">
-    <!-- Your app title -->
-    <title>beThere</title>
-    <!-- Path to Framework7 Library CSS, Material Theme -->
-    <link rel="stylesheet" href="vendor/f7/css/framework7.material.min.css">
-    <!-- Path to Framework7 color related styles, Material Theme -->
-    <link rel="stylesheet" href="vendor/f7/css/framework7.material.colors.min.css">
-    <link rel="stylesheet" href="vendor/linearicons/style.css">
-    <!-- Path to font-awesome fonts. -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Plugins -->
-    <link rel="stylesheet" href="css/welcomescreen.css">
-    <!-- Path to your custom app styles-->
-    <link rel="stylesheet" href="css/index.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com *; style-src 'self' 'unsafe-inline' *.googleapis.com *; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#ff9800">
+  <!-- Your app title -->
+  <title>beThere</title>
+  <!-- Path to Framework7 Library CSS, Material Theme -->
+  <link rel="stylesheet" href="vendor/f7/css/framework7.material.min.css">
+  <!-- Path to Framework7 color related styles, Material Theme -->
+  <link rel="stylesheet" href="vendor/f7/css/framework7.material.colors.min.css">
+  <link rel="stylesheet" href="vendor/linearicons/style.css">
+  <!-- Path to font-awesome fonts. -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Plugins -->
+  <link rel="stylesheet" href="css/welcomescreen.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body class="theme-orange">
+  <!-- Panels Overlay -->
+  <div class="panel-overlay"></div>
+
+  <!-- Left Panel with Reveal effect -->
+  <div class="panel panel-left panel-reveal" style="background-color: #e68a00">
+    <div class="content-block">
+      <img src="images/icon.png" alt="" class="circ" style="width: 160px; padding-left: 4.6vh" />
+      <h3 style="text-align: center">Events Nearby</h3>
+      <div class="list-block">
+        <ul>
+          <li>
+            <a class="item-link item-content" onclick="hardcoded1()">
+              <div class="item-media"><i class="fa fa-facebook-square"></i></div>
+              <div class="item-inner close-panel" style="margin-left: -18px">
+                <div class="item-title">White Night 2018</div>
+                <div class="item-after" style="color: #ffd699">&lt100m</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-link item-content" onclick="hardcoded2()">
+              <div class="item-media"><i class="fa fa-facebook-square"></i></div>
+              <div class="item-inner close-panel" style="margin-left: -18px">
+                <div class="item-title">JazzFest 2018</div>
+                <div class="item-after" style="color: #ffd699">3.2km</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="list-block-label">Events can be added by approved posters.<br /> <a href="" style="color: #ffd699">Apply today!</a></div>
+      </div>
+    </div>
+  </div>
   <!-- Views -->
   <div class="views">
     <!-- Your main view, should have "view-main" class -->
@@ -44,7 +76,10 @@
           <!-- Top Navbar. In Material theme it should be inside of the page-->
           <div class="navbar">
             <div class="navbar-inner">
-              <div class="center">beThere</div>
+              <a href="#" class="link icon-only open-panel">
+                <i class="icon icon-bars"></i>
+              </a>
+              <div class="left">beThere</div>
               <div class="right"><a href="#" class="link" id="btnfblogin"><i class="fa fa-unlock-alt"></i></a></div>
             </div>
           </div>
@@ -85,27 +120,71 @@
     </div>
   </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="scripts/global.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts/global.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
 
+  <!-- Maps scripts -->
+  <script src="scripts/markerclusterer.js"></script>
+  <script src="scripts/loadMap.js" charset="utf-8"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap" async defer></script>
 
-    <!-- Maps scripts -->
-    <script src="scripts/markerclusterer.js"></script>
-    <script src="scripts/loadMap.js" charset="utf-8"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap" async defer></script>
+  <!-- Facebook Stuff -->
+  <script src="scripts/fb.js" charset="utf-8"></script>
+  <!-- Path to your app js-->
+  <script type="text/javascript" src="scripts/index.js"></script>
+  <!-- Plugins scripts. -->
+  <script type="text/javascript" src="scripts/welcomescreen.js"></script>
 
-    <!-- Facebook Stuff -->
-    <script src="scripts/fb.js" charset="utf-8"></script>
-    <!-- Plugins scripts. -->
-    <script type="text/javascript" src="scripts/welcomescreen.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="scripts/index.js"></script>
+  <script type="text/javascript">
+    var welcomescreen_slides = [{
+        id: 'slide0',
+        picture: '<img src="images/icon.png" alt="" class="circ" style="width: 230px"/>',
+        text: '<h1 style="padding-bottom: 5vh">Welcome to beThere, the <b>premiere</b> festival media sharing app!</h1>'
+      },
+      {
+        id: 'slide1',
+        picture: '<img src="images/map01.png" alt="" class="circ" style="width: 230px"/>',
+        text: "<h1 style='padding-bottom: 5vh'>Just drag around the map to view your Facebook friends' posts.</h1>"
+      },
+      {
+        id: 'slide2',
+        picture: '<img src="images/map02.png" alt="" class="circ" style="width: 230px; height:230px; overflow-x: hidden"/>',
+        text: '<h1 style="padding-bottom: 8.7vh">You can add your sick gig footage at any time!</h1>'
+      },
+      {
+        id: 'slide3',
+        picture: '<img src="images/map01.png" alt="" class="circ" style="width: 230px"/>',
+        text: '<h1 style="padding-bottom: 0.5vh">Swipe right to see the ongoing Facebook events near you.*<br/><p style="font-size: 10px">*in the next product iteration, teehee</p></h1>'
+      },
+      {
+        id: 'slide4',
+        picture: '<img src="http://cdn.hercampus.com/s3fs-public/styles/full_width_embed/public/2015/04/12/persons-0041_large.png" alt="" class="circ" style="width: 220px; padding-top: 3vh" />',
+        text: "<div class='close-welcomescreen' style='margin-bottom: 9.7vh'><h1 style='margin-bottom: 0px'>That's it! Happy festival!</h1><br />Tap to continue.</div>"
+      }
+    ];
 
+    var myapp = new Framework7();
+
+    var options = {
+      'bgcolor': '#ff9800',
+      'fontcolor': '#fff'
+    }
+
+    var welcomescreen = myapp.welcomescreen(welcomescreen_slides, options);
+
+    function hardcoded1() {
+      console.log("hc1 called")
+    }
+
+    function hardcoded2() {
+      console.log("hc2 called")
+    }
+  </script>
 </body>
 
 </html>
