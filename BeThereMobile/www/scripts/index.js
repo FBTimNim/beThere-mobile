@@ -107,6 +107,7 @@
                         options.fileKey = 'media';
                         options.mimeType = 'image/jpeg';
                         options.chuckedMode = false;
+                        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
                         options.params = {
                             "uid": FBLogin.userId || '-1',
                             "lat": "-37.814",
@@ -168,6 +169,7 @@
                         var options = new FileUploadOptions();
                         options.fileKey = 'media';
                         options.mimeType = 'image/jpeg';
+                        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
                         options.params = {
                             "uid": FBLogin.userId || '-1',
                             "lat": -37.814,
