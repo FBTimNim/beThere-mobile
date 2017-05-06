@@ -1,12 +1,13 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
+
 <head>
-    <!--
+  <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com *; style-src 'self' 'unsafe-inline' *.googleapis.com *; media-src *">
-
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <!-- Required meta tags-->
@@ -14,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#2196f3">
+    <meta name="theme-color" content="#ff9800">
     <!-- Your app title -->
     <title>beThere</title>
     <!-- Path to Framework7 Library CSS, Material Theme -->
@@ -22,63 +23,66 @@
     <!-- Path to Framework7 color related styles, Material Theme -->
     <link rel="stylesheet" href="vendor/f7/css/framework7.material.colors.min.css">
     <link rel="stylesheet" href="vendor/linearicons/style.css">
+    <!-- Path to font-awesome fonts. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="css/welcomescreen.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body class="theme-orange">
-    <!-- Views -->
-    <div class="views">
-        <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main">
-            <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
-            <div class="pages navbar-fixed">
-                <!-- Page, "data-page" contains page name -->
-                <div data-page="index" class="page">
+  <!-- Views -->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-fixed">
+        <!-- Page, "data-page" contains page name -->
+        <div data-page="index" class="page">
 
-                    <!-- Top Navbar. In Material theme it should be inside of the page-->
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="center">beThere</div>
-                            <div class="right"><a href="#" class="link" id="btnfblogin">Login</a></div>
-                        </div>
-                    </div>
-
-                    <!-- Speed Dial Wrap -->
-                    <div class="speed-dial" style="padding-bottom: 2.5vh">
-                        <!-- FAB inside will open Speed Dial actions -->
-                        <a href="#" class="floating-button">
-                            <!-- First icon is visible when Speed Dial actions are closed -->
-                            <i class="icon icon-plus"></i>
-                            <!-- Second icon is visible when Speed Dial actions are opened -->
-                            <i class="icon icon-close"></i>
-                        </a>
-                        <!-- Speed Dial Actions -->
-                        <div class="speed-dial-buttons">
-                            <!-- First Speed Dial button -->
-                            <a href="uploadphoto.html">
-                                <span class="lnr lnr-camera"></span>
-                            </a>
-                            <!-- Second Speed Dial  button -->
-                            <a href="uploadvideo.html">
-                                <span class="lnr lnr-camera-video"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- End of Speed Dial -->
-
-                    <!-- Scrollable page content -->
-                    <div class="page-content">
-                      <div id="map" style="width: 100%; height: 100%"></div>
-                    </div>
-                </div>
+          <!-- Top Navbar. In Material theme it should be inside of the page-->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="center">beThere</div>
+              <div class="right"><a href="#" class="link" id="btnfblogin"><i class="fa fa-unlock-alt"></i></a></div>
             </div>
+          </div>
+
+          <!-- Speed Dial Wrap -->
+          <div class="speed-dial" style="padding-bottom: 2.5vh">
+            <!-- FAB inside will open Speed Dial actions -->
+            <a href="#" class="floating-button">
+              <!-- First icon is visible when Speed Dial actions are closed -->
+              <i class="icon icon-plus"></i>
+              <!-- Second icon is visible when Speed Dial actions are opened -->
+              <i class="icon icon-close"></i>
+            </a>
+            <!-- Speed Dial Actions -->
+            <div class="speed-dial-buttons">
+              <!-- First Speed Dial button -->
+              <a href="uploadphoto.html">
+                <span class="lnr lnr-camera"></span>
+              </a>
+              <!-- Second Speed Dial  button -->
+              <a href="uploadvideo.html">
+                <span class="lnr lnr-camera-video"></span>
+              </a>
+            </div>
+          </div>
+          <!-- End of Speed Dial -->
+
+          <!-- Scrollable page content -->
+          <div class="page-content">
+            <div id="map" style="width: 100%; height: 100%"></div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
     <!-- jQuery -->
-      <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="scripts/global.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
@@ -87,17 +91,17 @@
 
 
     <!-- Maps scripts -->
-    <script src = "scripts/markerclusterer.js"></script>
+    <script src="scripts/markerclusterer.js"></script>
     <script src="scripts/loadMap.js" charset="utf-8"></script>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap" async defer></script>
 
     <!-- Facebook Stuff -->
     <script src="scripts/fb.js" charset="utf-8"></script>
+    <!-- Plugins scripts. -->
+    <script type="text/javascript" src="scripts/welcomescreen.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="scripts/index.js"></script>
 
-
 </body>
+
 </html>

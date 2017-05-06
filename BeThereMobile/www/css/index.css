@@ -51,11 +51,14 @@
     text-align:center;
 }
 
-
 .upload-page-head{
     text-align: center;
     font-size: 100px;
     margin-top: 20px;
     margin-bottom: 20px;
     color:lightblue;
+}
+
+.circ {
+  border-radius: 50%;
 }
