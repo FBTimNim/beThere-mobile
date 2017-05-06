@@ -6,7 +6,7 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com *; style-src 'self' 'unsafe-inline' *.googleapis.com *; media-src *">
+
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <!-- Required meta tags-->
@@ -121,26 +121,32 @@
   </div>
 
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="scripts/global.js"></script>
-  <script type="text/javascript" src="cordova.js"></script>
-  <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-  <!-- Path to Framework7 Library JS-->
-  <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/global.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
 
   <!-- Maps scripts -->
   <script src="scripts/markerclusterer.js"></script>
   <script src="scripts/loadMap.js" charset="utf-8"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap" async defer></script>
 
-  <!-- Facebook Stuff -->
-  <script src="scripts/fb.js" charset="utf-8"></script>
   <!-- Path to your app js-->
   <script type="text/javascript" src="scripts/index.js"></script>
+
   <!-- Plugins scripts. -->
   <script type="text/javascript" src="scripts/welcomescreen.js"></script>
 
-  <script type="text/javascript">
+  <!-- Facebook Stuff -->
+    <script src="scripts/fb.js" charset="utf-8"></script>
+    <!-- Plugins scripts. -->
+    <script type="text/javascript" src="scripts/welcomescreen.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+  <script unsafe-inline>
     var welcomescreen_slides = [{
         id: 'slide0',
         picture: '<img src="images/icon.png" alt="" class="circ" style="width: 230px"/>',
