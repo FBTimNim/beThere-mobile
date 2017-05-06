@@ -47,15 +47,15 @@
         "is_top_level": true,
         "variables": {}
     },
-    "phonegap-facebook-plugin": {
+    "cordova-plugin-facebook4": {
         "source": {
             "type": "git",
-            "url": "https://github.com/Wizcorp/phonegap-facebook-plugin.git",
+            "url": "https://github.com/jeduan/cordova-plugin-facebook4.git",
             "subdir": "."
         },
         "is_top_level": true,
         "variables": {
-            "APP_ID": "802530166563418",
+            "APP_ID": "594974630712134",
             "APP_NAME": "beThere"
         }
     }
