@@ -60,9 +60,13 @@
                         alert("Could not get access token: " + err);
                         console.log(err);
                     });
+
+                    FB.getCurrentUsername(function (name) {
+                        $("#btnfblogin").text(name);
+                    });
                 }
 
-                facebookConnectPlugin.login(["public_profile"],
+                facebookConnectPlugin.login(["public_profile","user_friends"],
                     fbLoginSuccess,                                   
                     function (error) { alert("error" + error); console.log(error); }
                 );
