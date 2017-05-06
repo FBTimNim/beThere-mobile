@@ -1,5 +1,6 @@
 var map;
 var markerList = [];
+
 var iconURLs = ['images/listen.png', 'images/view.png', 'images/watch.png'];
 var namesList = [];
 
@@ -14,6 +15,7 @@ function initMap() {
     center: startingLocation,
     zoom: 13,
     streetViewControl: false,
+    disableDefaultUI : true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
@@ -92,6 +94,7 @@ function getNameHtml(names){
 }
 function addMapMarkers() {
   // Add Markers
+
   //
   // Need the media list from the database
   // TODO API CALL!
@@ -130,6 +133,7 @@ function addMapMarkers() {
   for (var i = 0; i < mediaList.length; i++) {
     markerList.push(createMarker(mediaList[i]));
   }
+
   var markerCluster = new MarkerClusterer(map, markerList, {
     imagePath: 'images/m'
   });
@@ -158,18 +162,19 @@ function showVideo() {
   var mediaType = this.mediaType;
   var mediaID = this.mediaID; // In this case youtube id
   emptyMediaDev();
+
   $(".media").append('<div class = "videoContainer"> <iframe src="http://www.youtube.com/embed/' + mediaID +
     '" width="560" height="315" frameborder="0" ></iframe> </div>');
 }
-
 function showImage() {
   var mediaType = this.mediaType;
   var mediaID = this.mediaID; // In this case image url
   emptyMediaDev();
+
   $(".media").append('<div class="content-block-title">Media</div>' +
     '<div class="col-100" id="imgViewer"> <img id="img-media" src="' + mediaID + '" /></div>');
 }
-
+function showAudio() { alert("Media: " + this.mediaType + " " + this.mediaID); }
 
 function getFunctionForMediaType(mediaType) {
   if (mediaType == 'video') {
@@ -182,7 +187,6 @@ function getFunctionForMediaType(mediaType) {
 function emptyMediaDev() {
   $(".media").empty();
 }
-
 function getIconURL(mediaType) {
   if (mediaType == 'photo') {
     return iconURLs[1];
@@ -193,8 +197,6 @@ function getIconURL(mediaType) {
     return iconURLs[0];
   }
 }
-
-
 
 function displayImage(mediaObject) {
   $('img-media').src('https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg');
