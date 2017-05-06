@@ -254,7 +254,7 @@ function addEventCircles() {
       strokeOpacity: 0,
       strokeWeight: 1,
       fillColor: '#b5c3fc',
-      fillOpacity: 0.25,
+      fillOpacity: 0.6,
       map: map,
       center: eventLocations[event].center,
       radius: eventLocations[event].radius
