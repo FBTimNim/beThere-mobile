@@ -5,15 +5,15 @@ A web app bundled into apk using [Apache Cordova](http://cordova.apache.org/).
 ## Folder Structure
 
 ```
-©¸©¤BeThereMobile
-    ©À©¤www
-    ©¦  ©À©¤vendor      // external libs
-    ©¦  ©À©¤scripts
-    ©¦  ©¸©¤css     
-    ©¦     
-    ©¸©¤bld
-       ©¸©¤Android
-          ©¸©¤Debug   // built apk
+â””â”€BeThereMobile
+    â”œâ”€www
+    â”‚  â”œâ”€vendor      // external libs
+    â”‚  â”œâ”€scripts
+    â”‚  â””â”€css     
+    â”‚     
+    â””â”€bld
+       â””â”€Android
+          â””â”€Debug   // built apk
 ```
 
 ## Frameworks used
