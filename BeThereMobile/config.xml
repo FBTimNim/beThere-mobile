@@ -105,4 +105,11 @@
   </platform>
   <plugin name="cordova-plugin-camera" spec="~2.4.1" />
   <plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
+  <plugin name="cordova-plugin-media-capture" spec="~1.4.3" />
+  <plugin name="cordova-plugin-compat" spec="~1.1.0" />
+  <plugin name="cordova-plugin-file" spec="~4.3.3" />
+  <plugin name="phonegap-facebook-plugin" spec="~0.12.0" src="https://github.com/Wizcorp/phonegap-facebook-plugin.git">
+    <variable name="APP_ID" value="802530166563418" />
+    <variable name="APP_NAME" value="beThere" />
+  </plugin>
 </widget>
