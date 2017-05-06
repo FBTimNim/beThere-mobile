@@ -1,6 +1,6 @@
 ﻿// For an introduction to the Blank template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkID=397704
-// To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints, 
+// To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints,
 // and then run "window.location.reload()" in the JavaScript Console.
 (function () {
     "use strict";
@@ -11,12 +11,19 @@
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
-        
+
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-        console.log("Device is Ready");
+        //This function is in loadMap.js
+        function onSuccess(position) {
+            changeMapLocation(position);
+        }
 
-
+        var onError = function(error){
+            console.log("panic");
+        }
+        
         // Initialize your app
         window.myApp = new Framework7({
             material: true
@@ -98,6 +105,4 @@
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
-
-
 } )();
