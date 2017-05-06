@@ -171,10 +171,10 @@ function addEventCircles() {
     // Add the circle for this city to the map.
     var eventRadius = new google.maps.Circle({
       strokeColor : '#FF0000',
-      strokeOpacity : 0.8,
-      strokeWeight : 2,
+      strokeOpacity : 0,
+      strokeWeight : 1,
       fillColor : '#b5c3fc',
-      fillOpacity : 0.35,
+      fillOpacity : 0.1,
       map : map,
       center : eventLocations[event].center,
       radius : eventLocations[event].radius
@@ -215,32 +215,45 @@ function getNameHtml(names) {
   string = string + 'And more!';
   return string;
 }
+
+function post(path, params, method) {
+  method = method || "post"; // Set method to post by default if not specified.
+
+  // The rest of this code assumes you are not using a library.
+  // It can be made less wordy if you use one.
+  var form = document.createElement("form");
+  form.setAttribute("method", method);
+  form.setAttribute("action", path);
+
+  for (var key in params) {
+    if (params.hasOwnProperty(key)) {
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", key);
+      hiddenField.setAttribute("value", params[key]);
+
+      form.appendChild(hiddenField);
+    }
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 function addMapMarkers() {
   // Add Markers
 
-  $.post("http://108.61.194.210:7981/api/getRelevant", {body: 'apikey=pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j&withinTime=1'},
-  function(result){
-        console.log(result);
-    });
-    
-    /*
-  fetch('http://108.61.194.210:7981/api/getRelevant' ,
-  {method: "post",
-  headers: {
-    "Content-Type": "multipart/form-data"
-  },
-  body:'apikey=pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j&withinTime=1'}
-).then(function(data) {
-      console.log(data);
-  })
-  .catch(function(err) {
-      // This is where you run code if the server returns any errors
-      console.log(err);
+  var jsonBody = $.post("http://108.61.194.210:7981/api/getRelevant", {
+    "apikey" :
+        "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
+    "withinTime" : 1,
   });
-  */
-  // Need the media list from the database
-  // TODO API CALL!
-  var mediaList = [
+
+  console.log(jsonBody)
+
+      // Need the media list from the database
+      // TODO API CALL!
+      var mediaList = [
     {
       position : {lat : -37.806548, lng : 144.971080},
       mediaType : 'photo',
