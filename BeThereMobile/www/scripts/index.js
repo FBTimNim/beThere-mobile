@@ -19,6 +19,22 @@
         console.log("READY");
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+
+
+        // Initialize your app
+        var myApp = new Framework7({
+            material: true
+        });
+
+        // Export selectors engine
+        var $$ = Dom7;
+
+        // Add view
+        window.mainView = myApp.addView('.view-main', {
+            // Because we use fixed-through navbar we can enable dynamic navbar
+            dynamicNavbar: true
+        });
+
     };
 
     function onPause() {
