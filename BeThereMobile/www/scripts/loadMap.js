@@ -4,6 +4,8 @@ var markerList = [];
 var iconURLs = [ 'images/listen.png', 'images/view.png', 'images/watch.png' ];
 var namesList = [];
 
+const SERVER_URL = "http://108.61.194.210"
+
 function initMap() {
   // Melbourne CBD
   var startingLocation = {lat : -37.813397, lng : 144.965072};
@@ -181,12 +183,19 @@ function addEventCircles() {
 }
 
 function makeApiRequestForMarkers() {
+  var interval = 5000;
   console.log("making request");
+
+  markerList = [];
+
   $.post("http://108.61.194.210/api/getRelevant", {
      "apikey" :
          "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
      "withinTime" : 1,
-   }).done(function(data) { addMapMarkers(data.data); });
+   }).done(function(data) {
+    addMapMarkers(data.data);
+    setTimeout(makeApiRequestForMarkers, interval);
+  });
 }
 
 function addMapMarkers(data) {
@@ -281,9 +290,10 @@ function showVideo() {
   var mediaType = this.mediaType;
   var url = SERVER_URL + '/api' + this.url; // In this case video url
   showMediaPanel();
-  $("#mediaContent").append('<div class="videoContainer"><video controls>' +
-      '<source src="' + url +'" type="video/mp4"/>'+
-        '</video></div>');
+  $("#mediaContent")
+      .append('<div class="videoContainer"><video controls>' +
+              '<source src="' + url + '" type="video/mp4"/>' +
+              '</video></div>');
   console.log("This is a video");
   console.log(url);
 }
@@ -292,7 +302,9 @@ function showImage() {
   var mediaType = this.mediaType;
   var url = SERVER_URL + '/api' + this.url; // In this case image url
   showMediaPanel();
-  $("#mediaContent").append('<div class="col-100" id="imgViewer"> <img id="img-media" src="' + url + '" /></div>');
+  $("#mediaContent")
+      .append('<div class="col-100" id="imgViewer"> <img id="img-media" src="' +
+              url + '" /></div>');
   console.log("This is an image");
   console.log(url);
 }
@@ -325,16 +337,13 @@ function displayImage(mediaObject) {
   $('img-viewer').show();
 }
 
-
 function showMediaPanel() {
-    $('#media').addClass('media-show').removeClass('media-hide');
-    $('#map').addClass('map-half').removeClass('map-full');
-    $("#mediaContent").empty();
+  $('#media').addClass('media-show').removeClass('media-hide');
+  $('#map').addClass('map-half').removeClass('map-full');
+  $("#mediaContent").empty();
 }
 
-
 function hideMediaPanel() {
-    $('#media').addClass('media-hide').removeClass('media-show');
-    $('#map').addClass('map-full').removeClass('map-half');
-
+  $('#media').addClass('media-hide').removeClass('media-show');
+  $('#map').addClass('map-full').removeClass('map-half');
 }
