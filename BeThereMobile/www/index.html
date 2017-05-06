@@ -6,27 +6,28 @@
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#ff9800">
-  <!-- Your app title -->
-  <title>beThere</title>
-  <!-- Path to Framework7 Library CSS, Material Theme -->
-  <link rel="stylesheet" href="vendor/f7/css/framework7.material.min.css">
-  <!-- Path to Framework7 color related styles, Material Theme -->
-  <link rel="stylesheet" href="vendor/f7/css/framework7.material.colors.min.css">
-  <link rel="stylesheet" href="vendor/linearicons/style.css">
-  <!-- Path to font-awesome fonts. -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Plugins -->
-  <link rel="stylesheet" href="css/welcomescreen.css">
-  <!-- Path to your custom app styles-->
-  <link rel="stylesheet" href="css/index.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com *; style-src 'self' 'unsafe-inline' *.googleapis.com *; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#ff9800">
+    <!-- Your app title -->
+    <title>beThere</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="vendor/f7/css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="vendor/f7/css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="vendor/linearicons/style.css">
+    <!-- Path to font-awesome fonts. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="css/welcomescreen.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body class="theme-orange">
@@ -114,14 +115,14 @@
       </div>
     </div>
   </div>
+  
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="scripts/global.js"></script>
-  <script type="text/javascript" src="cordova.js"></script>
-  <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-  <!-- Path to Framework7 Library JS-->
-  <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/global.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
 
   <!-- Maps scripts -->
   <script src="scripts/markerclusterer.js"></script>
@@ -133,6 +134,13 @@
 
   <!-- Plugins scripts. -->
   <script type="text/javascript" src="scripts/welcomescreen.js"></script>
+  
+  <!-- Facebook Stuff -->
+    <script src="scripts/fb.js" charset="utf-8"></script>
+    <!-- Plugins scripts. -->
+    <script type="text/javascript" src="scripts/welcomescreen.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="scripts/index.js"></script>
 
   <script>
     var welcomescreen_slides = [{
@@ -179,7 +187,6 @@
       console.log("hc2 called")
     }
   </script>
-
 </body>
 
 </html>
