@@ -221,7 +221,7 @@ function initMap() {
   makeApiRequestForMarkers();
   addEventCircles();
 
-  showWhoIsThere();
+
 }
 
 function changeMapLocation(newLoc) {
@@ -262,39 +262,8 @@ function addEventCircles() {
   }
 }
 
-function showWhoIsThere() {
-  // http://stackoverflow.com/questions/9229645/remove-duplicates-from-javascript-array
-  var uniqueNames = [];
-  $.each(namesList, function(i, el) {
-    if ($.inArray(el, uniqueNames) === -1)
-      uniqueNames.push(el);
-  });
-  var printingNamesList = [];
-  if (uniqueNames.length > 0) {
-    var namesSoFar = 0;
 
-    while ((namesSoFar < 5) && (namesSoFar != uniqueNames.length)) {
-      printingNamesList.push(uniqueNames[namesSoFar]);
-      namesSoFar += 1;
-    }
-  }
 
-  // The above code is so bad. And it's not even that late yet...
-  $(".mediaplaceholder-bottomtext").empty();
-  $(".mediaplaceholder-bottomtext").append(getNameHtml(printingNamesList));
-}
-
-function getNameHtml(names) {
-  if (names.length === 0) {
-    return "I'm sure people will be here soon";
-  }
-  var string = "Have fun with:<br>";
-  for (var name in names) {
-    string = string + names[name] + '<br>';
-  }
-  string = string + 'And more!';
-  return string;
-}
 
 function makeApiRequestForMarkers() {
   console.log("making request");
@@ -308,8 +277,6 @@ function makeApiRequestForMarkers() {
 
 function addMapMarkers(data) {
   // Add Markers
-  console.log(data);
-
   var mediaList = [{
       position: {
         lat: -37.806548,
@@ -353,7 +320,6 @@ function addMapMarkers(data) {
 }
 
 function createMarker(mediaItem) {
-  console.log(mediaItem);
   namesList.push(mediaItem.name);
   var iconURL = 'http://108.61.194.210/api' + mediaItem.thumbUrl;
 
@@ -368,52 +334,34 @@ function createMarker(mediaItem) {
   });
   marker.name = mediaItem.name;
   marker.mediaType = mediaItem.type;
-  marker.url = 'http://108.61.194.210/api/' + mediaItem.url;
+  marker.url =  mediaItem.url;
 
   // Add on click event to marker
-  marker.addListener('click', getFunctionForMediaType(mediaItem.mediaType));
+  marker.addListener('click', getFunctionForMediaType(mediaItem.type));
   return marker;
-}
-
-function showHostedVideo() {
-  var html = '<video width="320" height="240" controls>' +
-    '<source src="' + this.url + '" type="video/mp4">' +
-    "</video>";
-
-  emptyMediaDev();
-  $(".media").append(html);
 }
 
 function showVideo() {
   var mediaType = this.mediaType;
-  var mediaID = this.url; // In this case youtube id
-  emptyMediaDev();
-
-  $(".media").append(
-    '<div class = "videoContainer"> <iframe src="http://www.youtube.com/embed/' +
-    mediaID + '" width="560" height="315" frameborder="0" ></iframe> </div>');
+  var url = 'http://108.61.194.210/api' + this.url; // In this case video url
+  console.log("This is a video");
+  console.log(url);
 }
+
 
 function showImage() {
   var mediaType = this.mediaType;
-  var mediaID = this.mediaID; // In this case image url
-  emptyMediaDev();
-
-  $(".media").append(
-    '<div class="content-block-title">Media</div>' +
-    '<div class="col-100" id="imgViewer"> <img id="img-media" src="' +
-    mediaID + '" /></div>');
+  var url = 'http://108.61.194.210/api' + this.url; // In this case image url
+  console.log("This is an image");
+  console.log(url);
 }
 
-function showAudio() {
-  alert("Media: " + this.mediaType + " " + this.mediaID);
-}
 
 function getFunctionForMediaType(mediaType) {
-  if (mediaType == 'video') {
-    return showVideo;
-  } else {
+  if (mediaType == 'image') {
     return showImage;
+  } else {
+    return showVideo;
   }
 }
 
