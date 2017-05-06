@@ -181,12 +181,19 @@ function addEventCircles() {
 }
 
 function makeApiRequestForMarkers() {
-  console.log("making request");
-  $.post("http://108.61.194.210/api/getRelevant", {
-     "apikey" :
-         "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
-     "withinTime" : 1,
-   }).done(function(data) { addMapMarkers(data.data); });
+    var interval = 5000;
+    console.log("making request");
+
+    markerList = [];
+
+    $.post(SERVER_URL + "/api/getRelevant", {
+        "apikey":
+        "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
+        "withinTime": 1,
+    }).done(function (data) {
+        addMapMarkers(data.data);
+        setTimeout(makeApiRequestForMarkers, interval);
+    });
 }
 
 function addMapMarkers(data) {

@@ -104,6 +104,14 @@
             });
         });
 
+        function getLat() {
+            return -37.818314 + (Math.random() * 2.0 - 1.0) / 50.0;
+        }
+
+        function getLon() {
+            return 144.949055 + (Math.random() * 2.0 - 1.0) / 50.0;
+        }
+
         /** Photo Upload Page **/
         myApp.onPageInit('uploadphoto', function (page) {
             $$(page.container).find('#btnUploadCamera').on('click', function (e) {
@@ -132,8 +140,8 @@
                         options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
                         options.params = {
                             "uid": FBLogin.userId || '-1',
-                            "lat": "-37.814",
-                            "lon": "144.9633",
+                            "lat": getLat(),//"-37.814",
+                            "lon": getLon() ,//"144.9633",
                             "type": "photo",
                             "delay": "0",
                             "duration": "2",
@@ -194,8 +202,8 @@
                         options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
                         options.params = {
                             "uid": FBLogin.userId || '-1',
-                            "lat": -37.814,
-                            "lon": 144.9633,
+                            "lat": getLat(),//-37.814,
+                            "lon": getLon(),//144.9633,
                             "type": "video",
                             "delay": 0,
                             "duration": 2,
