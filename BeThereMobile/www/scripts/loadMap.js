@@ -218,7 +218,26 @@ function getNameHtml(names) {
 function addMapMarkers() {
   // Add Markers
 
-  //
+  $.post("http://108.61.194.210:7981/api/getRelevant", {body: 'apikey=pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j&withinTime=1'},
+  function(result){
+        console.log(result);
+    });
+    
+    /*
+  fetch('http://108.61.194.210:7981/api/getRelevant' ,
+  {method: "post",
+  headers: {
+    "Content-Type": "multipart/form-data"
+  },
+  body:'apikey=pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j&withinTime=1'}
+).then(function(data) {
+      console.log(data);
+  })
+  .catch(function(err) {
+      // This is where you run code if the server returns any errors
+      console.log(err);
+  });
+  */
   // Need the media list from the database
   // TODO API CALL!
   var mediaList = [
