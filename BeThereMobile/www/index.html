@@ -23,7 +23,7 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body class="theme-orange">
     <!-- Views -->
     <div class="views">
         <!-- Your main view, should have "view-main" class -->
@@ -42,7 +42,7 @@
                     </div>
 
                     <!-- Speed Dial Wrap -->
-                    <div class="speed-dial">
+                    <div class="speed-dial" style="padding-bottom: 2.5vh">
                         <!-- FAB inside will open Speed Dial actions -->
                         <a href="#" class="floating-button">
                             <!-- First icon is visible when Speed Dial actions are closed -->
@@ -66,18 +66,7 @@
 
                     <!-- Scrollable page content -->
                     <div class="page-content">
-                      <div id="map"></div>
-                      <div class="media">
-                          <div class="col-100">
-                               <div class="mediaplaceholder-toptext">
-                                   Some of your friends are at the event!
-                               </div>
-                              <div class="mediaplaceholder-bottomtext">
-                                  tap on a pin to see stuff
-                              </div>
-                          </div>
-                      </div>
-
+                      <div id="map" style="width: 100%; height: 100%"></div>
                     </div>
                 </div>
             </div>
