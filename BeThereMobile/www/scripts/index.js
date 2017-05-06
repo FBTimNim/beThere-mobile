@@ -98,6 +98,10 @@
                     function (error) { alert("error" + error); console.log(error); }
                 );
             });
+
+            $$(page.container).find("#btnCloseMedia").on("click", function (e) {
+                hideMediaPanel();
+            });
         });
 
         /** Photo Upload Page **/

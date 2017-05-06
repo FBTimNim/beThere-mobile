@@ -8,30 +8,19 @@
 }
 
 #map {
-  height: 50%;
   width: 100%;
 }
 
-.media {
-    height: 50%;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
 
-/** https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php **/
 .videoContainer {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 15px;
-	height: 0;
-}
-.videoWrapper iframe {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+    height:50%;
+    width:100%;
+    overflow: hidden;
+}
+.videoContainer video {
+    min-width: 100%;
+    min-height: 100%;
 }
 
 
@@ -61,4 +50,35 @@
 
 .circ {
   border-radius: 50%;
+}
+
+
+.map-full {
+    width: 100%;
+    height: 100%;
+}
+
+.map-half {
+    width: 100%;
+    height: 50%;
+}
+
+.media-hide {
+    display:none;
+}
+
+.media-show {
+    height: 50%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#mediaContent {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#img-media {
+    max-width:100%;
 }

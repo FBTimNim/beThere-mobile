@@ -343,7 +343,11 @@ function createMarker(mediaItem) {
 
 function showVideo() {
   var mediaType = this.mediaType;
-  var url = 'http://108.61.194.210/api' + this.url; // In this case video url
+  var url = SERVER_URL + '/api' + this.url; // In this case video url
+  showMediaPanel();
+  $("#mediaContent").append('<div class="videoContainer"><video controls>' +
+      '<source src="' + url +'" type="video/mp4"/>'+
+        '</video></div>');
   console.log("This is a video");
   console.log(url);
 }
@@ -351,7 +355,9 @@ function showVideo() {
 
 function showImage() {
   var mediaType = this.mediaType;
-  var url = 'http://108.61.194.210/api' + this.url; // In this case image url
+  var url = SERVER_URL + '/api' + this.url; // In this case image url
+  showMediaPanel();
+  $("#mediaContent").append('<div class="col-100" id="imgViewer"> <img id="img-media" src="' + url + '" /></div>');
   console.log("This is an image");
   console.log(url);
 }
@@ -363,10 +369,6 @@ function getFunctionForMediaType(mediaType) {
   } else {
     return showVideo;
   }
-}
-
-function emptyMediaDev() {
-  $(".media").empty();
 }
 
 function getIconURL(mediaType) {
@@ -385,4 +387,18 @@ function displayImage(mediaObject) {
     .src('https://farm3.staticflickr.com/2808/34282062515_6192a67cfd.jpg');
 
   $('img-viewer').show();
+}
+
+
+function showMediaPanel() {
+    $('#media').addClass('media-show').removeClass('media-hide');
+    $('#map').addClass('map-half').removeClass('map-full');
+    $("#mediaContent").empty();
+}
+
+
+function hideMediaPanel() {
+    $('#media').addClass('media-hide').removeClass('media-show');
+    $('#map').addClass('map-full').removeClass('map-half');
+
 }
