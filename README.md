@@ -1,8 +1,13 @@
-# beThere mobile app
+# Mobile Client for beThere
+A geo-social app for immersive experience at festivals. 
 
-A web app bundled into apk using [Apache Cordova](http://cordova.apache.org/).
+> Honourable Mention at Facebook Melbourne Hackathon 2017
+
+![Screen Shot](screenshot.png)
 
 ## Folder Structure
+This is a web app bundled into apk using [Apache Cordova](http://cordova.apache.org/).
+
 
 ```
 └─BeThereMobile
@@ -11,7 +16,7 @@ A web app bundled into apk using [Apache Cordova](http://cordova.apache.org/).
     │  ├─scripts
     │  └─css     
     │     
-    └─bld
+    └─bin
        └─Android
           └─Debug   // built apk
 ```
