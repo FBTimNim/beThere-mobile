@@ -3,7 +3,7 @@ A geo-social app for immersive experience at festivals.
 
 > Honourable Mention at Facebook Melbourne Hackathon 2017
 
-![Screen Shot](screenshot.png)
+<img alt="Screen Shot" src="screenshot.png" width="300">
 
 ## Folder Structure
 This is a web app bundled into apk using [Apache Cordova](http://cordova.apache.org/).
