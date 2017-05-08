@@ -1,7 +1,7 @@
 # Mobile Client for beThere
 A geo-social app for immersive experience at festivals. 
 
-> Honourable Mention at Facebook Melbourne Hackathon 2017
+> Tied third place at Facebook Melbourne Hackathon 2017
 
 <img alt="Screen Shot" src="screenshot.png" width="300">
 
