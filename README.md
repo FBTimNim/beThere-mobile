@@ -27,6 +27,7 @@ This is a web app bundled into apk using [Apache Cordova](http://cordova.apache.
 
 ## How to Build
 
+ - Ensure the www/scripts/loadMap.js file has a correct server host added.
  - Install [Visual Studio 2017](http://visualstudio.com/)
  - Select the `Mobile development with JavaScript` workload when installing
  - Open the solution file `BeThereMobile.sln`
