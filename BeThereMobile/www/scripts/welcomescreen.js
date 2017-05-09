@@ -8,7 +8,7 @@
  * @author www.timo-ernst.net
  * @license MIT
  */
-Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) {
+Framework7.prototype.plugins.welcomescreen = function(app, globalPluginParams) {
   'use strict';
   // Variables in module scope
   var $$ = Dom7,
@@ -16,20 +16,22 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
     Welcomescreen;
 
   // Click handler to close welcomescreen
-  $$(document).on('click', '.close-welcomescreen', function (e) {
+  $$(document).on('click', '.close-welcomescreen', function(e) {
     e.preventDefault();
     var $wscreen = $$(this).parents('.welcomescreen-container');
-    if ($wscreen.length > 0 && $wscreen[0].f7Welcomescreen) { $wscreen[0].f7Welcomescreen.close(); }
+    if ($wscreen.length > 0 && $wscreen[0].f7Welcomescreen) {
+      $wscreen[0].f7Welcomescreen.close();
+    }
   });
-  
+
   /**
    * Represents the welcome screen
    *
    * @class
    * @memberof module:Framework7/prototype/plugins/welcomescreen
    */
-  Welcomescreen = function (slides, options) {
-    
+  Welcomescreen = function(slides, options) {
+
     // Private properties
     var self = this,
       defaultTemplate,
@@ -38,14 +40,14 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
       swiper,
       swiperContainer,
       defaults = {
-        closeButton: true,        // enabled/disable close button
-        closeButtonText : 'Skip', // close button text
-        cssClass: '',             // additional class on container
-        pagination: true,         // swiper pagination
-        loop: false,              // swiper loop
-        open: true                // open welcome screen on init
+        closeButton: true, // enabled/disable close button
+        closeButtonText: 'Skip', // close button text
+        cssClass: '', // additional class on container
+        pagination: true, // swiper pagination
+        loop: false, // swiper loop
+        open: true // open welcome screen on init
       };
-    
+
     /**
      * Initializes the swiper
      *
@@ -58,7 +60,7 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
         pagination: options.pagination ? swiperContainer.find('.swiper-pagination') : undefined
       });
     }
-    
+
     /**
      * Sets colors from options
      *
@@ -72,7 +74,7 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
         });
       }
     }
-    
+
     /**
      * Sets the default template
      *
@@ -80,33 +82,33 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
      */
     function defineDefaultTemplate() {
       defaultTemplate = '<div class="welcomescreen-container {{#if options.cssClass}}{{options.cssClass}}{{/if}}">' +
-          '{{#if options.closeButton}}' +
-          '<div class="welcomescreen-closebtn close-welcomescreen">{{options.closeButtonText}}</div>' +
-          '{{/if}}' +
-          '<div class="welcomescreen-swiper">' +
-            '<div class="swiper-wrapper">' +
-              '{{#each slides}}' +
-              '<div class="swiper-slide" {{#if id}}id="{{id}}"{{/if}}>' +
-                '{{#if content}}' +
-                  '<div class="welcomescreen-content">{{content}}</div>' +
-                '{{else}}' +
-                  '{{#if picture}}' +
-                    '<div class="welcomescreen-picture">{{picture}}</div>' +
-                  '{{/if}}' +
-                  '{{#if text}}' +
-                    '<div class="welcomescreen-text">{{text}}</div>' +
-                  '{{/if}}' +
-                '{{/if}}' +
-              '</div>' +
-              '{{/each}}' +
-            '</div>' +
-            '{{#if options.pagination}}' +
-            '<div class="welcomescreen-pagination swiper-pagination"></div>' +
-            '{{/if}}' +
-          '</div>' +
+        '{{#if options.closeButton}}' +
+        '<div class="welcomescreen-closebtn close-welcomescreen">{{options.closeButtonText}}</div>' +
+        '{{/if}}' +
+        '<div class="welcomescreen-swiper">' +
+        '<div class="swiper-wrapper">' +
+        '{{#each slides}}' +
+        '<div class="swiper-slide" {{#if id}}id="{{id}}"{{/if}}>' +
+        '{{#if content}}' +
+        '<div class="welcomescreen-content">{{content}}</div>' +
+        '{{else}}' +
+        '{{#if picture}}' +
+        '<div class="welcomescreen-picture">{{picture}}</div>' +
+        '{{/if}}' +
+        '{{#if text}}' +
+        '<div class="welcomescreen-text">{{text}}</div>' +
+        '{{/if}}' +
+        '{{/if}}' +
+        '</div>' +
+        '{{/each}}' +
+        '</div>' +
+        '{{#if options.pagination}}' +
+        '<div class="welcomescreen-pagination swiper-pagination"></div>' +
+        '{{/if}}' +
+        '</div>' +
         '</div>';
     }
-    
+
     /**
      * Sets the options that were required
      *
@@ -121,7 +123,7 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
         }
       }
     }
-    
+
     /**
      * Compiles the template
      *
@@ -138,21 +140,26 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
         template = t7.compile(options.template);
       }
     }
-    
+
     /**
      * Shows the welcome screen
      *
      * @public
      * @memberof module:Framework7/prototype/plugins/welcomescreen
      */
-    self.open = function () {
-      container = $$(template({options: options, slides: slides}));
+    self.open = function() {
+      container = $$(template({
+        options: options,
+        slides: slides
+      }));
       swiperContainer = container.find('.welcomescreen-swiper');
       setColors();
       $$('body').append(container);
       initSwiper();
       container[0].f7Welcomescreen = self;
-      if (typeof options.onOpened === 'function') { options.onOpened(); }
+      if (typeof options.onOpened === 'function') {
+        options.onOpened();
+      }
     };
 
     /**
@@ -161,67 +168,79 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
      * @public
      * @memberof module:Framework7/prototype/plugins/welcomescreen
      */
-    self.close = function () {
-      if (swiper) { swiper.destroy(true); }
-      if (container) { container.remove(); }
+    self.close = function() {
+      if (swiper) {
+        swiper.destroy(true);
+      }
+      if (container) {
+        container.remove();
+      }
       container = swiperContainer = swiper = undefined;
-      if (typeof options.onClosed === 'function') { options.onClosed(); }
+      if (typeof options.onClosed === 'function') {
+        options.onClosed();
+      }
     };
-    
-   /**
+
+    /**
      * Shows the next slide
      *
      * @public
      * @memberof module:Framework7/prototype/plugins/welcomescreen
      */
-    self.next = function () {
-      if (swiper) { swiper.slideNext(); }
+    self.next = function() {
+      if (swiper) {
+        swiper.slideNext();
+      }
     };
-    
-   /**
+
+    /**
      * Shows the previous slide
      *
      * @public
      * @memberof module:Framework7/prototype/plugins/welcomescreen
      */
-    self.previous = function () {
-      if (swiper) { swiper.slidePrev(); }
+    self.previous = function() {
+      if (swiper) {
+        swiper.slidePrev();
+      }
     };
-    
-   /**
+
+    /**
      * Goes to the desired slide
      *
      * @param {number} index The slide to show
      * @public
      * @memberof module:Framework7/prototype/plugins/welcomescreen
      */
-    self.slideTo = function (index) {
-      if (swiper) { swiper.slideTo(index); }
+    self.slideTo = function(index) {
+      if (swiper) {
+        swiper.slideTo(index);
+      }
     };
-    
+
     /**
      * Initialize the instance
      *
      * @method init
      */
-    (function () {
+    (function() {
       defineDefaultTemplate();
       compileTemplate();
       applyOptions();
-      
+
       // Open on init
       if (options.open) {
         self.open();
       }
-      
+
     }());
-    
+
     // Return instance
     return self;
   };
-  
-  app.welcomescreen = function (slides, options) {
+
+  app.welcomescreen = function(slides, options) {
     return new Welcomescreen(slides, options);
   };
-  
+
 };

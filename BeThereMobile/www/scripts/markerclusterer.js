@@ -126,14 +126,14 @@ function MarkerClusterer(map, opt_markers, opt_options) {
    * @private
    */
   this.imagePath_ = options['imagePath'] ||
-      this.MARKER_CLUSTER_IMAGE_PATH_;
+    this.MARKER_CLUSTER_IMAGE_PATH_;
 
   /**
    * @type {string}
    * @private
    */
   this.imageExtension_ = options['imageExtension'] ||
-      this.MARKER_CLUSTER_IMAGE_EXTENSION_;
+    this.MARKER_CLUSTER_IMAGE_EXTENSION_;
 
   /**
    * @type {boolean}
@@ -172,8 +172,8 @@ function MarkerClusterer(map, opt_markers, opt_options) {
     var zoom = that.map_.getZoom();
     var minZoom = that.map_.minZoom || 0;
     var maxZoom = Math.min(that.map_.maxZoom || 100,
-                         that.map_.mapTypes[that.map_.getMapTypeId()].maxZoom);
-    zoom = Math.min(Math.max(zoom,minZoom),maxZoom);
+      that.map_.mapTypes[that.map_.getMapTypeId()].maxZoom);
+    zoom = Math.min(Math.max(zoom, minZoom), maxZoom);
 
     if (that.prevZoom_ != zoom) {
       that.prevZoom_ = zoom;
@@ -507,7 +507,7 @@ MarkerClusterer.prototype.removeMarker = function(marker, opt_nodraw) {
     this.redraw();
     return true;
   } else {
-   return false;
+    return false;
   }
 };
 
@@ -631,9 +631,9 @@ MarkerClusterer.prototype.getExtendedBounds = function(bounds) {
 
   // Turn the bounds into latlng.
   var tr = new google.maps.LatLng(bounds.getNorthEast().lat(),
-      bounds.getNorthEast().lng());
+    bounds.getNorthEast().lng());
   var bl = new google.maps.LatLng(bounds.getSouthWest().lat(),
-      bounds.getSouthWest().lng());
+    bounds.getSouthWest().lng());
 
   // Convert the points to pixels and the extend out by the grid size.
   var trPix = projection.fromLatLngToDivPixel(tr);
@@ -736,7 +736,7 @@ MarkerClusterer.prototype.redraw = function() {
  * @param {google.maps.LatLng} p2 The second lat lng point.
  * @return {number} The distance between the two points in km.
  * @private
-*/
+ */
 MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
   if (!p1 || !p2) {
     return 0;
@@ -798,7 +798,7 @@ MarkerClusterer.prototype.createClusters_ = function() {
   // Get our current map view bounds.
   // Create a new bounds object so we don't affect the map.
   var mapBounds = new google.maps.LatLngBounds(this.map_.getBounds().getSouthWest(),
-      this.map_.getBounds().getNorthEast());
+    this.map_.getBounds().getNorthEast());
   var bounds = this.getExtendedBounds(mapBounds);
 
   for (var i = 0, marker; marker = this.markers_[i]; i++) {
@@ -827,7 +827,7 @@ function Cluster(markerClusterer) {
   this.markers_ = [];
   this.bounds_ = null;
   this.clusterIcon_ = new ClusterIcon(this, markerClusterer.getStyles(),
-      markerClusterer.getGridSize());
+    markerClusterer.getGridSize());
 }
 
 /**
@@ -867,8 +867,8 @@ Cluster.prototype.addMarker = function(marker) {
   } else {
     if (this.averageCenter_) {
       var l = this.markers_.length + 1;
-      var lat = (this.center_.lat() * (l-1) + marker.getPosition().lat()) / l;
-      var lng = (this.center_.lng() * (l-1) + marker.getPosition().lng()) / l;
+      var lat = (this.center_.lat() * (l - 1) + marker.getPosition().lat()) / l;
+      var lng = (this.center_.lng() * (l - 1) + marker.getPosition().lng()) / l;
       this.center_ = new google.maps.LatLng(lat, lng);
       this.calculateBounds_();
     }
@@ -1229,31 +1229,31 @@ ClusterIcon.prototype.createCss = function(pos) {
 
   if (typeof this.anchor_ === 'object') {
     if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&
-        this.anchor_[0] < this.height_) {
+      this.anchor_[0] < this.height_) {
       style.push('height:' + (this.height_ - this.anchor_[0]) +
-          'px; padding-top:' + this.anchor_[0] + 'px;');
+        'px; padding-top:' + this.anchor_[0] + 'px;');
     } else {
       style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
-          'px;');
+        'px;');
     }
     if (typeof this.anchor_[1] === 'number' && this.anchor_[1] > 0 &&
-        this.anchor_[1] < this.width_) {
+      this.anchor_[1] < this.width_) {
       style.push('width:' + (this.width_ - this.anchor_[1]) +
-          'px; padding-left:' + this.anchor_[1] + 'px;');
+        'px; padding-left:' + this.anchor_[1] + 'px;');
     } else {
       style.push('width:' + this.width_ + 'px; text-align:center;');
     }
   } else {
     style.push('height:' + this.height_ + 'px; line-height:' +
-        this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
+      this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
   }
 
   var txtColor = this.textColor_ ? this.textColor_ : 'black';
   var txtSize = this.textSize_ ? this.textSize_ : 11;
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
-      pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
-      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
+    pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
+    txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
   return style.join('');
 };
 
@@ -1265,38 +1265,38 @@ window['MarkerClusterer'] = MarkerClusterer;
 MarkerClusterer.prototype['addMarker'] = MarkerClusterer.prototype.addMarker;
 MarkerClusterer.prototype['addMarkers'] = MarkerClusterer.prototype.addMarkers;
 MarkerClusterer.prototype['clearMarkers'] =
-    MarkerClusterer.prototype.clearMarkers;
+  MarkerClusterer.prototype.clearMarkers;
 MarkerClusterer.prototype['fitMapToMarkers'] =
-    MarkerClusterer.prototype.fitMapToMarkers;
+  MarkerClusterer.prototype.fitMapToMarkers;
 MarkerClusterer.prototype['getCalculator'] =
-    MarkerClusterer.prototype.getCalculator;
+  MarkerClusterer.prototype.getCalculator;
 MarkerClusterer.prototype['getGridSize'] =
-    MarkerClusterer.prototype.getGridSize;
+  MarkerClusterer.prototype.getGridSize;
 MarkerClusterer.prototype['getExtendedBounds'] =
-    MarkerClusterer.prototype.getExtendedBounds;
+  MarkerClusterer.prototype.getExtendedBounds;
 MarkerClusterer.prototype['getMap'] = MarkerClusterer.prototype.getMap;
 MarkerClusterer.prototype['getMarkers'] = MarkerClusterer.prototype.getMarkers;
 MarkerClusterer.prototype['getMaxZoom'] = MarkerClusterer.prototype.getMaxZoom;
 MarkerClusterer.prototype['getStyles'] = MarkerClusterer.prototype.getStyles;
 MarkerClusterer.prototype['getTotalClusters'] =
-    MarkerClusterer.prototype.getTotalClusters;
+  MarkerClusterer.prototype.getTotalClusters;
 MarkerClusterer.prototype['getTotalMarkers'] =
-    MarkerClusterer.prototype.getTotalMarkers;
+  MarkerClusterer.prototype.getTotalMarkers;
 MarkerClusterer.prototype['redraw'] = MarkerClusterer.prototype.redraw;
 MarkerClusterer.prototype['removeMarker'] =
-    MarkerClusterer.prototype.removeMarker;
+  MarkerClusterer.prototype.removeMarker;
 MarkerClusterer.prototype['removeMarkers'] =
-    MarkerClusterer.prototype.removeMarkers;
+  MarkerClusterer.prototype.removeMarkers;
 MarkerClusterer.prototype['resetViewport'] =
-    MarkerClusterer.prototype.resetViewport;
+  MarkerClusterer.prototype.resetViewport;
 MarkerClusterer.prototype['repaint'] =
-    MarkerClusterer.prototype.repaint;
+  MarkerClusterer.prototype.repaint;
 MarkerClusterer.prototype['setCalculator'] =
-    MarkerClusterer.prototype.setCalculator;
+  MarkerClusterer.prototype.setCalculator;
 MarkerClusterer.prototype['setGridSize'] =
-    MarkerClusterer.prototype.setGridSize;
+  MarkerClusterer.prototype.setGridSize;
 MarkerClusterer.prototype['setMaxZoom'] =
-    MarkerClusterer.prototype.setMaxZoom;
+  MarkerClusterer.prototype.setMaxZoom;
 MarkerClusterer.prototype['onAdd'] = MarkerClusterer.prototype.onAdd;
 MarkerClusterer.prototype['draw'] = MarkerClusterer.prototype.draw;
 
@@ -1309,10 +1309,10 @@ ClusterIcon.prototype['draw'] = ClusterIcon.prototype.draw;
 ClusterIcon.prototype['onRemove'] = ClusterIcon.prototype.onRemove;
 
 Object.keys = Object.keys || function(o) {
-    var result = [];
-    for(var name in o) {
-        if (o.hasOwnProperty(name))
-          result.push(name);
-    }
-    return result;
+  var result = [];
+  for (var name in o) {
+    if (o.hasOwnProperty(name))
+      result.push(name);
+  }
+  return result;
 };
