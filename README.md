@@ -26,6 +26,8 @@ Frameworks used
 How to Build
 ------------
 
+First of all ensure you have a file called `secure.js` in your scripts folder. There is an example in `www/scripts/secure.js.example`.
+
 -	Windows
 	-	Install [Visual Studio 2017](http://visualstudio.com/)
 	-	Select the `Mobile development with JavaScript` workload when installing

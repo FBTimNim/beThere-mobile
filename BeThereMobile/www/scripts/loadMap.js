@@ -4,7 +4,7 @@ var markerList = [];
 var iconURLs = ['images/listen.png', 'images/view.png', 'images/watch.png'];
 var namesList = [];
 
-const SERVER_URL = "http://108.61.194.210"
+// const SERVER_URL; // Ensure this is set up!
 
 function initMap() {
   // Melbourne CBD

@@ -4,8 +4,6 @@
 // devices/emulators: launch your app, set breakpoints, and then run
 // "window.location.reload()" in the JavaScript Console.
 
-import "secure.js";
-
 (function() {
   "use strict";
   console.log('load');
