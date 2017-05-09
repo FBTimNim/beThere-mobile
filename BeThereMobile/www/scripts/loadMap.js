@@ -268,7 +268,7 @@ function makeApiRequestForMarkers() {
 
   markerList = [];
 
-  $.post("http://108.61.194.210/api/getRelevant", {
+  $.post(SERVER_URL + "/api/getRelevant", {
     "apikey": "pekdaYjYqAPkAmjT0953s4U2Z3jaW04bz0uAUfdZ36RfMdCnkF0Bf0Odcptx9A3j",
     "withinTime": 1,
   }).done(function(data) {
@@ -335,7 +335,7 @@ function addMapMarkers(data) {
 
 function createMarker(mediaItem) {
   namesList.push(mediaItem.name);
-  var iconURL = 'http://108.61.194.210/api' + mediaItem.thumbUrl;
+  var iconURL = SERVER_URL + '/api' + mediaItem.thumbUrl;
 
   var marker = new google.maps.Marker({
     title: mediaItem.name,
