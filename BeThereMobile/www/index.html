@@ -110,44 +110,51 @@
           <!-- Scrollable page content -->
           <div class="page-content">
             <div id="map" class="map-full"></div>
-             <div id="media" class="media-hide">
-                 <div class="button button-raised" style="position: absolute; background: white; opacity: 80%; margin-top: 2vh; margin-left: 1.5vh;"><a href="#" class="link" id="btnCloseMedia" onclick="hideMediaPanel()" style="">Close</a></div>
-                 <div id="mediaContent" style="width: 100%; height: 100%"></div>
-             </div>
+            <div id="media" class="media-hide">
+              <div class="button button-raised" style="position: absolute; background: white; opacity: 80%; margin-top: 2vh; margin-left: 1.5vh;"><a href="#" class="link" id="btnCloseMedia" onclick="hideMediaPanel()" style="">Close</a></div>
+              <div id="mediaContent" style="width: 100%; height: 100%"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Project specific secure vars. -->
+  <script type="text/javascript" src="scripts/secure.js"></script>
+
   <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="scripts/global.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts/global.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="vendor/f7/js/framework7.min.js"></script>
 
   <!-- Maps scripts -->
   <script src="scripts/markerclusterer.js"></script>
   <script src="scripts/loadMap.js" charset="utf-8"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZX7jr_eIH82whYG1bPU8G-HkOi7lnsc&callback=initMap" async defer></script>
 
+  <!-- Cookie scripts -->
+  <script type="text/javascript" src="scripts/js.cookies.js"></script>
+
   <!-- Path to your app js-->
-  <script type="text/javascript" src="scripts/secure.js"></script>
   <script type="text/javascript" src="scripts/index.js"></script>
 
   <!-- Plugins scripts. -->
   <script type="text/javascript" src="scripts/welcomescreen.js"></script>
 
   <!-- Facebook Stuff -->
-    <script src="scripts/fb.js" charset="utf-8"></script>
-    <!-- Plugins scripts. -->
-    <script type="text/javascript" src="scripts/welcomescreen.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="scripts/index.js"></script>
+  <script src="scripts/fb.js" charset="utf-8"></script>
+  <!-- Plugins scripts. -->
+  <script type="text/javascript" src="scripts/welcomescreen.js"></script>
+  <!-- Path to your app js-->
+  <script type="text/javascript" src="scripts/index.js"></script>
 
-  <script unsafe-inline>
+  <script type="text/javascript" src="scripts/setup.js"></script>
+
+  <script>
     var welcomescreen_slides = [{
         id: 'slide0',
         picture: '<img src="images/icon.png" alt="" class="circ" style="width: 230px"/>',
@@ -175,21 +182,14 @@
       }
     ];
 
-    var myapp = new Framework7();
-
     var options = {
       'bgcolor': '#ff9800',
       'fontcolor': '#fff'
     }
 
-    var welcomescreen = myapp.welcomescreen(welcomescreen_slides, options);
-
-    function hardcoded1() {
-      console.log("hc1 called")
-    }
-
-    function hardcoded2() {
-      console.log("hc2 called")
+    if (Cookies.get('welcome_seen') == undefined) {
+      var welcomescreen = myapp.welcomescreen(welcomescreen_slides, options);
+      Cookies.set('welcome_seen', 'yes');
     }
   </script>
 </body>
